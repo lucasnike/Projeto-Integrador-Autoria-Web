@@ -3,6 +3,10 @@ body {
     background: #fafafa;
 }
 
+.wrapper {
+    height: 100vh;
+}
+
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
