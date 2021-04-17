@@ -26,7 +26,9 @@
         <nav id="sidebar">
             <ul class="lisst-unstyled components">
                 <li class="active">
-                    <a href="#intro-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                    <!-- Introdução -->
+                    <a href="#intro-submenu" wm-nav="./pages/intro.html" id="intro-link" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="nav-item">
                             Introdução
                         </span>
@@ -40,7 +42,9 @@
                         </li>
 
                     </ul>
-                    <a href="#redes-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                    <!-- Redes -->
+                    <a href="#redes-submenu" wm-nav="./pages/redes.html" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="nav-item">
                             Arq. de Redes
                         </span>
@@ -56,7 +60,9 @@
                             <a class="sub-item" href="#">Dolor</a>
                         </li>
                     </ul>
-                    <a href="#autoria-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                    <!-- Autoria Web -->
+                    <a href="#autoria-submenu" wm-nav="./pages/autoria.html" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="nav-item">
                             Autoria Web
                         </span>
@@ -72,7 +78,9 @@
                             <a class="sub-item" href="#">Dolor</a>
                         </li>
                     </ul>
-                    <a href="#manutencao-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                    <!-- Manutenção -->
+                    <a href="#manutencao-submenu" wm-nav="./pages/manutencao.html" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="nav-item">
                             Org. e Manutenção
                         </span>
@@ -88,7 +96,9 @@
                             <a class="sub-item" href="#">Dolor</a>
                         </li>
                     </ul>
-                    <a href="#banco-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                    <!-- Banco de dados -->
+                    <a href="#banco-submenu" wm-nav="./pages/bd.html" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="nav-item">
                             Banco de Dados
                         </span>
@@ -104,7 +114,9 @@
                             <a class="sub-item" href="#">Dolor</a>
                         </li>
                     </ul>
-                    <a href="#consideracoes-submenu" data-toggle="collapse" aria-expanded="false"
+
+                    <!-- Considerações e refefrências -->
+                    <a href="#consideracoes-submenu" wm-nav="./pages/final.html" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">
                         <span class="nav-item">
                             Considerações
@@ -121,7 +133,7 @@
                             <a class="sub-item" href="#">Dolor</a>
                         </li>
                     </ul>
-                    <a href="#referencias-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <!-- <a href="#referencias-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <span class="nav-item">
                             Referências
                         </span>
@@ -136,7 +148,7 @@
                         <li>
                             <a class="sub-item" href="#">Dolor</a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
             </ul>
         </nav>
@@ -157,35 +169,10 @@
                     </div>
                 </nav>
                 <br>
-                <h2 id="introducao">INTRODUÇÃO</h2>
-                <p>
-                    Este trabalho apresenta uma especificação de um ambiente virtual voltado para a aprendizagem dos
-                    alunos, ele envolve diversas disciplinas, são elas: Arquitetura de Redes de Computadores e
-                    Tecnologias de Implementação de Redes, Autoria WEB, Arquitetura
-                    e Manutenção de Computadores e Programação com Acesso a Banco de Dados. Todas essas disciplinas
-                    estão presentes na grade curricular do curso técnico Integrado em Informática.
-                </p>
-                <p>
-                    O projeto de título “Especificação de um ambiente virtual voltado para a aprendizagem dos alunos”
-                    visa apresentar uma oportunidade para que o curso de Informática possa ser viabilizado de forma
-                    remota em situações reais de exceção, como a que estamos
-                    vivenciando no calendário civil de 2020 e 2021. Muitas dificuldades foram encontradas durante o ano
-                    letivo de 2020, como: dificuldades de acesso a internet por parte dos alunos, falta de equipamentos
-                    (hardware) necessários, falta de
-                    familiaridade com as plataformas existentes, ambiente inadequado para estudo, dentre outros. Com a
-                    finalização deste projeto muitas destas dificuldades podem ser superadas.
 
-                </p>
-                <p>Abaixo está a equipe responsável pela gerência de todo o projeto (limitado a 7 alunos por grupo):
-                </p>
-                <p>
-                    David Gomes de Oliveira Silva; Johnattan Thiago do Nascimento Morais; Karolina Beatriz da Silva
-                    Nascimento; Maria Eduarda Rodrigues Pereira; Maurilio Jeferson Alves de Vasconcelos; Solene Cruz
-                    Camilo; Yrlla Valeska Viana dos Santos; Leonardo Gomes de
-                    Paiva Amorim (prof orientador); Elialdo Chibério da Silva (prof orientador). Everson Mizael Cortez
-                    Silva (prof orientador)
+                <div id="conteudo">
 
-                </p>
+                </div>
 
             </section>
 
@@ -208,6 +195,20 @@
                 $('#sidebar').toggleClass('active');
             });
         });
+
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = e => {
+                e.preventDefault()
+
+                fetch(link.getAttribute('wm-nav'))
+                    .then(res => res.text())
+                    .then(htmlText => conteudo.innerHTML = htmlText)
+            }
+        })
+
+        document.getElementById("intro-link").click()
     </script>
 </body>
 

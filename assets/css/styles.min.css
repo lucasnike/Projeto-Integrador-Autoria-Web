@@ -20,7 +20,11 @@ a:focus {
 }
 
 .wrapper {
-    height: 100vh;
+    height: fit-content;
+}
+
+hr {
+    margin: 30px 0px;
 }
 
 
