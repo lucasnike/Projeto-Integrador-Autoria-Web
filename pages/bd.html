@@ -1,1 +1,218 @@
 <h1>PROGRAMAÇÃO COM ACESSO A BANCO DE DADOS</h1>
+<h2 id="introducao-5.1">INTRODUÇÃO</h2>
+
+<p>
+	Um Banco de Dados pode ser definido como uma coleção de dados que são
+	relacionados entre si sobre um determinado contexto ou domínio (empresa,
+	organização, instituição, entre outros). Segundo ELMASRI & NAVATHE (2005), um
+	Banco de Dados pode ser definido de tais maneiras:
+ </p>
+
+ <p>
+	a) Um Banco de Dados é uma coleção logicamente coerente de dados comum
+	determinado significado inerente. Isto significa que um conjunto aleatório de
+	dados não pode ser considerado um Banco de Dados
+ </p>
+
+ <p>
+	b) Um Banco de Dados é projetado, construído e composto por um conjunto de
+	dados para um propósito específico (como no nosso exemplo acima para
+	armazenar um conjunto de informações de alunos). Existe um grupo de
+	usuários ou algumas aplicações pré-concebidas onde estes dados serão
+	utilizados.
+ </p>
+
+
+<p>
+	c) Um Banco de Dados representa aspectos de uma parte restrita do mundo
+	real, denominado de minimundo. Alterações que ocorra no minimundo são
+	refletidas em todo o Banco de Dados.
+</p>
+
+<p>
+	Um projeto relacionado a construção de um Banco pode ser realizado em 3
+	fases, sendo a Fase 1 conhecida como Modelagem Conceitual, a Fase 2 Modelagem
+	lógica e por fim, a Fase 3 denominada como Modelagem física. Durante a modelagem
+	conceitual, um diagrama do tipo Entidade-Relacionamento é construído. A partir dessa
+	modelagem é possível definir as necessidades do domínio em termos de 
+	armazenamento de dados de forma independente da implementação e de SGBD
+	(Sistema de Gerenciamento de Banco de Dados). 
+</p>
+
+<p>
+	Dando início a segunda fase, o
+	principal objetivo será a transformação do modelo conceitual proposto anteriormente
+	em um modelo Lógico. Este modelo irá definir a maneira de como o Banco de Dados
+	será implementado em termos de estrutura, a título de exemplo através de um
+	esquema relacional. Desse modo, é projetado o grupamento de alvos para a
+	implementação, porém ainda não há a dependência de um SGBD específico. Por fim,
+	a última fase do projeto é referente a implementação do Banco de Dados que foi
+	definido em um SGBD específico, no caso deste trabalho especificamente, o SGBD
+	usado foi o MySQL.
+</p>
+
+<h2 id="espec-5.2">Especificações</h2>
+	
+<p>
+	Visando o desenvolvimento de um ambiente virtual voltado para a aprendizagem
+	dos alunos, foi criada a modelagem conceitual do banco de dados deste ambiente, que
+	referente a primeira fase de uma criação de banco de dados, consiste em entidades
+	(que mais tarde serão chamadas de tabelas) e seus respectivos atributos, bem como a
+	forma com que se relacionam umas com as outras. São elas:
+ </p>
+
+<h4>Pessoa</h4>
+
+<p> Atributos: idPessoa, Nome, CPF, Email, DataNascimento, Celular;</p>
+
+<p>
+Esta tabela possui os dados pessoais dos indivíduos (nome, CPF, data de
+nascimento, e-mail e celular) que serão registrados no banco de dados como
+aluno ou professor. Seu atributo identificador é idPessoa.
+A tabela Pessoa se relaciona com as tabelas: Aluno, de forma que uma pessoa
+pode receber nenhum ou um aluno; Professor, de forma que pode receber
+nenhum ou um professor, através dessa relação de cardinalidade pode-se
+cadastrar ou um Aluno ou um Professor.
+</p>
+
+ <h4>Aluno</h4>
+
+ <p>Atributos: idPessoa, Matrícula_Aluno, e idCurso.</p>
+
+<p>
+	Esta entidade registra a matrícula do aluno em um determinado curso, bem
+	como a ID referente a este curso, seu atributo identificador é a ID que referencia
+	a entidade pessoa, onde seus dados pessoais estão inseridos.
+	Relaciona-se com as entidades: Pessoa, onde sempre terá um registro nessa
+	entidade, pois Aluno é uma especialização da classe Pessoa; Curso, de forma
+	que pode estar matriculado em apenas um curso; Aluno_Entrega_Atividade,
+	onde o aluno pode entregar nenhuma ou várias atividades; Turma_Aluno, onde
+	o aluno pode estar matriculado em nenhuma ou em várias turmas.
+</p>
+
+
+
+<h4>Professor</h4>
+
+<p>Atributos: idPessoa, Matricula_Professor e Especialidades.</p>
+
+<p>Esta entidade é responsável por registrar a matrícula de um professor e as
+especialidades em que atua, é identificado a partir do atributo idPessoa, que faz
+referência a entidade pessoa, onde estão armazenados os seus dados pessoais.
+Relaciona-se com as tabelas: <strong>Pessoa</strong>, onde pode possuir nenhum ou um
+registro; <strong>Turma_Professor</strong>, de forma que possa ministrar em nenhuma ou
+várias turmas; <strong>Professor_podeMinistrar</strong>, onde nenhum ou um professor pode
+ministrar uma ou várias disciplinas.</p>
+
+<h4>Curso</h4>
+
+<p>Atributos: idCurso, Nome e Carga_Horaria;</p>
+
+<p>Entidade responsável por registrar os diversos cursos num banco de dados, com
+a ID, o nome e a carga horária destes cursos.
+Relaciona-se com a tabela <strong>Aluno</strong>, de forma que nenhum ou muitos alunos
+podem estar matriculados em um curso.
+</p>
+
+<h4>Turma</h4>
+<p>Atributos: idTurma, Nome, codigoTurma, Semestre, Capacidade_Maxima, Local
+e Horário;
+</p>
+
+<p>Nesta entidade estarão registrados o ID responsável por identificar uma turma, o
+código necessário para o ingresso de alunos nesta turma, a capacidade máxima
+de alunos que a turma permite, local e horário de encontros, bem como o
+período/semestre ao qual se encontra.
+Relaciona-se com as tabelas <strong>Atividade</strong>, onde pode receber nenhuma ou várias
+atividades; <strong>Turma_Aluno</strong>, de forma que pode conter nenhum ou vários alunos
+matriculados; <strong>Turma_Professor</strong>, de forma que pode conter um ou vários
+professores ministrando disciplinas; <strong>Material</strong>, de forma que pode conter nenhum
+ou vários materiais.</p>
+
+<h4>Disciplina</h4>
+<p>Recebe os atributos idDisciplina, CargaHorária, Nome e Eh_Anual;</p>
+
+<p>Esta tabela é responsável pelo registro das disciplinas ofertadas aos alunos,
+possui uma ID como atributo identificador, o nome da disciplina, bem como a
+informação sobre a disciplina ser anual ou semestral.
+Relaciona-se com a tabela <strong>Professor_podeMinistrar</strong>, de forma que uma
+disciplina pode ser ministrada por um ou vários professores.</p>
+
+<h4>Atividade</h4>
+<p>Atributos: idAtividade, idTurma, Data_Inicio, Nota_Maxima e Data_Fim;</p>
+
+<p>Esta entidade é referente ao registro de atividades lançadas por um professor
+para suas respectivas turmas, ela possui um atributo identificador de uma
+atividade, a ID da turma a qual será direcionada (que faz referência a entidade
+turma), a data que a atividade foi lançada para a turma, a data em que esta
+atividade atinge o prazo de entrega, e a nota máxima que um aluno pode
+receber.
+Está relacionada às tabelas <strong>Turma</strong>, de maneira que nenhuma ou várias
+atividades podem ser atribuídas a uma turma; <strong>Aluno_Entrega_Atividade</strong>, onde
+a atividade pode ser entregue por nenhum ou vários alunos.</p>
+
+
+<h4>Material</h4>
+<p>Atributos idMaterial, idTurma, tipo e aminho/url;</p>
+
+<p>Esta entidade abrange todos os materiais de estudo disponibilizados a uma
+turma, nela estão o ID dos diferentes materiais, o ID da turma a qual o material
+será destinado (referente à entidade turma), o tipo desse material (arquivo de
+texto, vídeo, PDF, link, entre outros), como também a URL ou o caminho que
+direciona o aluno a este material.
+Se relaciona com a tabela <strong>Turma</strong>, de forma que nenhum ou vários materiais
+podem ser atribuídos a uma turma.</p>
+
+<h4>Turma_Aluno </h4>
+
+<p>Atributos: id_PessoaAluno, idTurma, horario_entrada_aluno;</p>
+
+<p>Esta tabela refere-se ao relacionamento entre aluno e turma, possui como
+identificadores a ID do aluno que faz referência à tabela aluno (que por sua vez,
+referência a tabela pessoa, onde estão inseridos os dados do aluno). Por fim, o
+atributo responsável pelo registro do dia e horário em que o aluno ingressou
+nesta turma.
+Está relacionada às tabelas <strong>Aluno</strong>, de maneira que uma turma pode conter
+nenhum ou vários alunos inseridos nela; <strong>Turma</strong>, onde um aluno pode estar
+inserido em nenhuma ou várias turmas.</p>
+
+
+<h4>Turma_Professor</h4>
+
+<p>Atributos: id_PessoaProfessor, idTurma, Horário_Entrada_Professor;</p>
+
+<p>Esta tabela refere-se ao relacionamento entre professor e turma, seus
+identificadores são a ID do professor que faz referência à tabela professor (e
+esta, referência a tabela pessoa, onde os dados do professor estão registrados).
+Bem como o atributo responsável pelo registro do dia e horário em que o
+professor ingressou nesta turma.
+Relaciona-se com <strong>Professor</strong>, de forma que possui nenhum ou vários
+professores; <strong>Turma</strong>, onde pode conter um ou vários professores ministrando
+nela.</p>
+
+<h4>Aluno_Entrega_Atividade</h4>
+<p>Atributos: IdAtividade, id_PessoaAluno, Data_Entrega, Status, Nota e Corrigido;</p>
+
+<p>Esta tabela refere-se ao relacionamento de atividade com o aluno que deverá
+entregar uma atividade, possui como atributos identificadores a ID da atividade,
+que faz referência a entidade atividade, e a ID de aluno, que faz referência à
+entidade aluno e a entidade pessoa, onde o aluno está inserido. Possui também
+o atributo que registra a data e hora em que o aluno realizou a entrega da
+atividade, bem como o status em que se encontra esta atividade (atribuída,
+entregue ou pendente), a informação de que a atividade foi corrigida ou não, e
+por fim, a nota atribuída a esta atividade.
+Está relacionada às tabelas <strong>Aluno</strong>, de maneira que um aluno pode entregar
+nenhuma ou muitas atividades; <strong>Atividade</strong>, de maneira que pode ser atribuída a
+nenhum ou vários alunos.</p>
+
+<h4>Professor_Pode_Ministrar</h4>
+<p>Atributos: Id_pessoaProfessor, idDisciplina;</p>
+
+<p>Esta tabela é referente às disciplinas que cada professor registrado no banco de
+dados poderá ministrar, possui um atributo que identifica o professor, fazendo
+referência à tabela professor e consequentemente a tabela pessoa, onde o
+professor está inerido. Bem como o atributo que identifica uma determinada
+disciplina, a qual o professor ministrará.
+Se relaciona com as tabelas <strong>Professor</strong>, onde nenhum ou um professor pode
+ministrar uma ou várias disciplinas; <strong>Disciplina</strong>, que pode ser ministrada por um
+ou vários professores.</p>
