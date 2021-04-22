@@ -164,3 +164,26 @@ section {
         border-radius: 50px;
     }
 }
+
+
+/* Autoria Web CSS */
+
+#autoria-img {
+    width: 100%;
+}
+
+#autoria-layout-mobile {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#autoria-layout-mobile img {
+    height: 20%;
+    width: 40%;
+
+    border: solid 3px #222;
+    border-radius: 10px;
+}
