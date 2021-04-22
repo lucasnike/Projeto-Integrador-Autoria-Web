@@ -199,8 +199,17 @@ section {
 
 table, tr, td, th {
     border: solid 2px #222;
-    padding: 10px;
+    padding: 3px;
     text-align: center;
+    /* width: 100%; */
+}
+
+@media (max-width: 768px) {
+    table {
+        border: solid 5px #222;
+        font-size: 0.6rem;
+        width: 100%;
+    }
 }
 
 #redes-center {
@@ -213,7 +222,7 @@ table, tr, td, th {
 }
 
 #redes-center img {
-    margin: 10px;
+    margin: 10px 0px;
     border: solid 3px #222;
     border-radius: 6px;
     width: 100%;
