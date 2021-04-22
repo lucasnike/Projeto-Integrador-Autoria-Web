@@ -66,7 +66,9 @@
 	forma com que se relacionam umas com as outras. São elas:
  </p>
 
-<h4>Pessoa</h4>
+<hr>
+
+<h4>5.2.1 Pessoa</h4>
 
 <p> Atributos: idPessoa, Nome, CPF, Email, DataNascimento, Celular;</p>
 
@@ -80,7 +82,8 @@ nenhum ou um professor, através dessa relação de cardinalidade pode-se
 cadastrar ou um Aluno ou um Professor.
 </p>
 
- <h4>Aluno</h4>
+<hr>
+ <h4>5.2.2 Aluno</h4>
 
  <p>Atributos: idPessoa, Matrícula_Aluno, e idCurso.</p>
 
@@ -95,9 +98,9 @@ cadastrar ou um Aluno ou um Professor.
 	o aluno pode estar matriculado em nenhuma ou em várias turmas.
 </p>
 
+<hr>
 
-
-<h4>Professor</h4>
+<h4>5.2.3 Professor</h4>
 
 <p>Atributos: idPessoa, Matricula_Professor e Especialidades.</p>
 
@@ -109,7 +112,9 @@ registro; <strong>Turma_Professor</strong>, de forma que possa ministrar em nenh
 várias turmas; <strong>Professor_podeMinistrar</strong>, onde nenhum ou um professor pode
 ministrar uma ou várias disciplinas.</p>
 
-<h4>Curso</h4>
+<hr>
+
+<h4>5.2.4 Curso</h4>
 
 <p>Atributos: idCurso, Nome e Carga_Horaria;</p>
 
@@ -119,7 +124,9 @@ Relaciona-se com a tabela <strong>Aluno</strong>, de forma que nenhum ou muitos 
 podem estar matriculados em um curso.
 </p>
 
-<h4>Turma</h4>
+<hr>
+
+<h4>5.2.5 Turma</h4>
 <p>Atributos: idTurma, Nome, codigoTurma, Semestre, Capacidade_Maxima, Local
 e Horário;
 </p>
@@ -134,7 +141,9 @@ matriculados; <strong>Turma_Professor</strong>, de forma que pode conter um ou v
 professores ministrando disciplinas; <strong>Material</strong>, de forma que pode conter nenhum
 ou vários materiais.</p>
 
-<h4>Disciplina</h4>
+<hr>
+
+<h4>5.2.6 Disciplina</h4>
 <p>Recebe os atributos idDisciplina, CargaHorária, Nome e Eh_Anual;</p>
 
 <p>Esta tabela é responsável pelo registro das disciplinas ofertadas aos alunos,
@@ -143,7 +152,9 @@ informação sobre a disciplina ser anual ou semestral.
 Relaciona-se com a tabela <strong>Professor_podeMinistrar</strong>, de forma que uma
 disciplina pode ser ministrada por um ou vários professores.</p>
 
-<h4>Atividade</h4>
+<hr>
+
+<h4>5.2.7 Atividade</h4>
 <p>Atributos: idAtividade, idTurma, Data_Inicio, Nota_Maxima e Data_Fim;</p>
 
 <p>Esta entidade é referente ao registro de atividades lançadas por um professor
@@ -156,8 +167,10 @@ Está relacionada às tabelas <strong>Turma</strong>, de maneira que nenhuma ou 
 atividades podem ser atribuídas a uma turma; <strong>Aluno_Entrega_Atividade</strong>, onde
 a atividade pode ser entregue por nenhum ou vários alunos.</p>
 
+<hr>
 
-<h4>Material</h4>
+
+<h4>5.2.8 Material</h4>
 <p>Atributos idMaterial, idTurma, tipo e aminho/url;</p>
 
 <p>Esta entidade abrange todos os materiais de estudo disponibilizados a uma
@@ -168,7 +181,9 @@ direciona o aluno a este material.
 Se relaciona com a tabela <strong>Turma</strong>, de forma que nenhum ou vários materiais
 podem ser atribuídos a uma turma.</p>
 
-<h4>Turma_Aluno </h4>
+<hr>
+
+<h4>5.2.9 Turma_Aluno </h4>
 
 <p>Atributos: id_PessoaAluno, idTurma, horario_entrada_aluno;</p>
 
@@ -181,8 +196,9 @@ Está relacionada às tabelas <strong>Aluno</strong>, de maneira que uma turma p
 nenhum ou vários alunos inseridos nela; <strong>Turma</strong>, onde um aluno pode estar
 inserido em nenhuma ou várias turmas.</p>
 
+<hr>
 
-<h4>Turma_Professor</h4>
+<h4>5.2.10 Turma_Professor</h4>
 
 <p>Atributos: id_PessoaProfessor, idTurma, Horário_Entrada_Professor;</p>
 
@@ -195,7 +211,9 @@ Relaciona-se com <strong>Professor</strong>, de forma que possui nenhum ou vári
 professores; <strong>Turma</strong>, onde pode conter um ou vários professores ministrando
 nela.</p>
 
-<h4>Aluno_Entrega_Atividade</h4>
+<hr>
+
+<h4>5.2.11 Aluno_Entrega_Atividade</h4>
 <p>Atributos: IdAtividade, id_PessoaAluno, Data_Entrega, Status, Nota e Corrigido;</p>
 
 <p>Esta tabela refere-se ao relacionamento de atividade com o aluno que deverá
@@ -210,7 +228,9 @@ Está relacionada às tabelas <strong>Aluno</strong>, de maneira que um aluno po
 nenhuma ou muitas atividades; <strong>Atividade</strong>, de maneira que pode ser atribuída a
 nenhum ou vários alunos.</p>
 
-<h4>Professor_Pode_Ministrar</h4>
+<hr>
+
+<h4>5.2.12 Professor_Pode_Ministrar</h4>
 <p>Atributos: Id_pessoaProfessor, idDisciplina;</p>
 
 <p>Esta tabela é referente às disciplinas que cada professor registrado no banco de
@@ -221,3 +241,5 @@ disciplina, a qual o professor ministrará.
 Se relaciona com as tabelas <strong>Professor</strong>, onde nenhum ou um professor pode
 ministrar uma ou várias disciplinas; <strong>Disciplina</strong>, que pode ser ministrada por um
 ou vários professores.</p>
+
+<p>Fiura 6 - Diagrama Entidade Relacionamento (DER)</p>
